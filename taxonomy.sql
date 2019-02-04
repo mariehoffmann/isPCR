@@ -42,8 +42,9 @@ CREATE TABLE names(
 );
 
 CREATE TABLE accessions(
-    tax_id int PRIMARY KEY,
-    accession varchar[],
+    tax_id int NOT NULL,
+    accession varchar NOT NULL,
+    PRIMARY KEY(tax_id, accession),
     FOREIGN KEY (tax_id) REFERENCES node(tax_id)
 );
 

@@ -24,6 +24,7 @@ import sys
 import tarfile
 
 import config as cfg
+import reference
 import taxonomy
 
 parser = argparse.ArgumentParser(description='Setup and build databases.')
@@ -32,18 +33,6 @@ parser.add_argument('--reference', dest='reference', action='store_true')
 parser.add_argument('--download', dest='download', action='store_true')
 parser.add_argument('--build', dest='build', action='store_true')
 parser.add_argument('--password', '-p', dest='password', nargs=1, default='', help='Password of the postgres user.')
-
-
-def reference_download():
-    print("Start downloading reference database ...")
-
-    print("... ok.")
-
-def reference_build():
-    print("Start building reference database ...")
-
-    print("... ok.")
-
 
 if __name__ == "__main__":
     args = parser.parse_args()
@@ -62,6 +51,6 @@ if __name__ == "__main__":
             sys.exit(-1)
         taxonomy.build()
     elif args.reference and args.download:
-        reference_download()
+        reference.download()
     else:
-        reference_build()
+        reference.build()
